@@ -1,0 +1,176 @@
+/* Animate the logo with keyframes.*/
+@keyframes logoAnimation {
+    from {
+    /* start with width 25px and opacity 0 */
+    width: 25px;
+    opacity: 0;
+    }
+    to {
+    /* end with width of 475px and opacity 1 */
+    width: 475px;
+    opacity: 1;
+    }
+  }
+  /* animation should take 5 seconds */
+#logo{
+    animation: logoAnimation 5s forwards;
+}
+/* Change body font to Poppins*/
+body{
+    font-family: "Poppins",
+    sans-serif;
+    /* set background image to concrete_seamless.png */
+    background-image: url("../images/concrete_seamless.png");
+    /* set backup color to #f1f1f1 */
+    background-color: #f1f1f1;
+}
+/* make all headers use flex */
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* make the nav_links class use flex*/
+.nav_links{
+    display: flex;
+    flex-direction: column;
+}
+/* make the links have the same color even after they have been visited*/
+a:link, a:visited{
+    color: #0000ff;
+}
+/* style only header elements that are direct children of a card class*/
+.card > header{
+    /* make background color #288088 */
+    background-color: #288088;
+    /* make a solid 2px border with #45ADAD */
+    border: solid 2px #45ADAD;
+    /* make 20px of padding on the top and bottom */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* make 50px border-radius on the top left and right corners */
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+/*make card class match example -> use flex direction column to have cards vertically stacked*/
+.card{
+    display: flex;
+    flex-direction: column;
+    /* make 50px border-radius on the top left and right corners */
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    /* use flex-basis to set an initial size of 450px */
+    flex-basis: 450px;
+}
+/*make the pricing class to match example -> the cards should be centered both horizontally and vertically. */
+.pricing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* make images in gallery class have a solid 10px border with a color of #50C7C7 */
+.gallery > img{
+    border: solid 10px #50C7C7;
+    /* 10px margin on all four sides  */
+    margin: 10px;
+    /* width of 300px */
+    width: 300px;
+}
+/*make the gallery class match our example*/
+.gallery{
+    display: flex;
+    /* the bigger the screen, the more images on one line -> flex wrap */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* following changes are for when the screen-size is greater than 900px */
+@media screen and (min-width: 900px) {
+    /* make header tag match example using flex properties */
+    header{
+        display: flex;
+        /* items should be next to each other horizontally */
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    /* make nav_links class match example using flex properties */
+    .nav_links{
+        display: flex;
+        flex-direction: row;
+        /* nav links should be as far to the left as possible */
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+    }
+    /* make the pricing and card classes to match example*/
+    .pricing{
+        display: flex;
+        flex-direction: row;
+    }
+    /* specify the card with a size of 275px */
+    .card{
+        display: flex;
+        flex-basis: 275px;
+    }
+    /* make the first header visible at the top of the screen even as we scroll down */
+    body > header:first-of-type{
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+    }
+    /* use padding so header is not overlapping main content */
+    main{
+        padding-top: 75px;
+    }
+}
+/* following changes are for when the user prefers reduced motion */
+@media screen and (prefers-reduced-motion: reduce){
+    /* the logo should appear but not be animated */
+    #logo{
+        /* no animation */
+        animation: none;
+        /* keep the same size */
+        width: 475px;
+        /* have full opacity */
+        opacity: 1;
+    }
+}
+/* following changes are for when the page is printed in portrait mode */
+@media print and (orientation: portrait) {
+    body{
+        /* change body font to Arial with Helvetica as backup */
+        font-family: Arial, Helvetica;
+        /* remove background image */
+        background-image: none;
+    }
+    /* nav link elements should be horizontal and spaced from each other */
+    .nav_links{
+        display: flex;
+        flex-direction: row;
+    }
+    .nav_item{
+        /* display: flex;
+        flex-direction: row; */
+        align-items: space-between;
+        margin-right: 80px;
+        margin-left: 80px;
+    }
+    /* align items of the pricing class along the bottom */
+    .pricing{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+    }
+    /* make card elements have a solid border 2px of #45ADDD */
+    .card{
+        border: solid 2px #45ADDD;
+        flex-basis: 325px;
+    }
+    .gallery, #gallery{
+        display: none;
+    }
+    .card li:nth-child(2)::after{
+        content: "\1F44D";
+    }
+}
